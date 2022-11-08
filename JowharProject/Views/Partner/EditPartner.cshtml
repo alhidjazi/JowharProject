@@ -1,0 +1,35 @@
+﻿@model EntityLayer.Concrete.Partner
+@{
+    ViewBag.Title = "EditPartner";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Edit Partner</h2>
+@using (Html.BeginForm("EditPartner", "Partner", FormMethod.Post))
+{
+<div class="form-group">
+
+    @Html.HiddenFor(x => x.PartnerID, new { @class = "form-control" })
+    <br />
+    @Html.Label("Partner Name")
+    @Html.TextBoxFor(x => x.PartnerName, new { @class = "form-control" })
+    <br />
+    @Html.Label("Country")
+    @Html.TextBoxFor(x => x.PartnerCountry, new { @class = "form-control" })
+    <br />
+    @Html.Label("Description")
+    @Html.TextAreaFor(x => x.PartnerDescription, new { @class = "form-control" })
+    <br />
+    @Html.Label("Status: ")
+    <select name="PartnerStatus" id="PartnerID">
+        <option>Select Status</option>
+        <option value="true">AKTIF</option>
+        <option value="false">PASIF</option>
+    </select>
+    @Html.ValidationMessageFor(x => x.PartnerStatus)
+    <br />
+    <button class="btn btn-success">Update</button>
+</div>
+}
+
+

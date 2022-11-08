@@ -1,0 +1,39 @@
+﻿@model EntityLayer.Concrete.Partner
+@{
+    ViewBag.Title = "AddPartner";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{ bool status = false;}
+
+@using (Html.BeginForm("AddPartner", "Partner", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.Label("Partner Name")
+    @Html.TextBoxFor(x => x.PartnerName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.PartnerName)
+    <br />
+    @Html.Label("Country")
+    @Html.TextAreaFor(x => x.PartnerCountry, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.PartnerCountry)
+    <br />
+    @Html.Label("Description")
+    @Html.TextAreaFor(x => x.PartnerDescription, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.PartnerDescription)
+    <br />
+    @Html.Label("Status: ")
+    <select name="PartnerStatus" id="PartnerID">
+        <option>Select Status</option>
+        <option value="true">AKTIF</option>
+        <option value="false">PASIF</option>
+
+
+    </select>
+    @Html.ValidationMessageFor(x => x.PartnerStatus)
+    <br />
+    <button class="btn btn-info">Add</button>
+</div>
+}
+
+
+

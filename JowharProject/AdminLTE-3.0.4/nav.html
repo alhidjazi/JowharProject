@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="author" content="Sinan Tekmil" />
+	<title>Responsive Nav Menu 2</title>
+	<link rel="stylesheet" href="responsive-nav.css" />
+<script>
+function toggle() {
+ if (document.getElementById("nav-ul").style.display=="block"){
+   document.getElementById("nav-ul").style.display=""
+	document.getElementById("nav-toggle-alt").style.display="none"
+  }
+ else{
+  document.getElementById("nav-ul").style.display="block";
+  document.getElementById("nav-toggle-alt").style.display="block"
+ }
+}
+</script>
+</head>
+<body>
+<header>
+<nav>
+<div id="nav-toggle" onclick="toggle()">Menü</div>
+<ul id="nav-ul">
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<!-- sub menu -->
+<li class="dropdown">
+<a href="#">Dropdown1</a>
+<ul>
+<li>
+	<a href="#">Sub Menu1</a>
+	<ul class="sub-sub">
+		<li><a href="#">Sub Sub 1</a></li>
+		<li><a href="#">Sub Sub 2</a></li>
+	</ul>
+</li>
+<li><a href="#">Sub Menu2</a></li>
+<li><a href="#">Sub Menu3</a></li>
+</ul>
+</li>
+<!-- #sub menu -->
+<li class="dropdown">
+<a href="#">Dropdown2</a>
+<ul>
+<li><a href="#">Sub Menu1</a></li>
+<li><a href="#">Sub Menu2</a></li>
+<li><a href="#">Sub Menu3</a></li>
+</ul>
+</li>
+<!-- #sub menu -->
+<li><a href="#">Gallery</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+<div id="nav-toggle-alt" onclick="toggle()">X</div>
+</nav>
+</header>
+<footer style="margin-top:40px;text-align:center">
+	<a id="logo" href="http://www.veblebi.com/" title="VebLebi" target="_blank">
+		<img src="http://www.veblebi.com/wp-content/uploads/veblebi-logo.png" alt="VebLebi">
+	</a>
+</footer>
+</body>
+</html>

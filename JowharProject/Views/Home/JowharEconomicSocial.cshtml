@@ -1,0 +1,86 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+@{
+    ViewBag.Title = "JowharAcademy";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Jowhar Academy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/sidebar-03/css/style.css">
+</head>
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="active">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="p-4">
+                <h1 style="color:black; font-size:20px; "><a href="#" class="logo">JOWHAR ISTITUTE</a></h1>
+                <ul class="list-unstyled components mb-5">
+                    <li class="active">
+                        <a href="/Home/Index/"><span class="fa fa-home mr-3"></span> Home</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-user mr-3"></span> About Us</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-question mr-3"></span> What We Do</a>
+
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-briefcase mr-3"></span> Projects</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-bookmark mr-3"></span> Resources</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-upload mr-3"></span> Publications</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fas fa-american-sign-language-interpreting mr-3"></span> Get Involve</a>
+                        <i class="fa-sharp fa-solid fa-mug-saucer"></i>
+                    </li>
+
+                </ul>
+
+
+
+
+
+            </div>
+        </nav>
+        @foreach (var item in Model)
+        {
+            if (item.CategoryID == 6)
+            {
+                <div id="content" class="p-4 p-md-5 pt-5">
+                    <h2 class="mb-4">@item.CategoryName</h2>
+                    <p>@item.CategoryDescription.</p>
+                    
+                </div>
+            }
+            <!-- Page Content  -->
+
+        }
+    </div>
+
+    <script src="~/AdminLTE-3.0.4/sidebar-03/js/jquery.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/sidebar-03/js/popper.js"></script>
+    <script src="~/AdminLTE-3.0.4/sidebar-03/js/bootstrap.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/sidebar-03/js/main.js"></script>
+</body>
+</html>
+

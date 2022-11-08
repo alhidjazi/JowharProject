@@ -1,0 +1,28 @@
+﻿@model EntityLayer.Concrete.Heading
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Add</h2>
+@using (Html.BeginForm("Add", "Heading", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.Label("Heading Name")
+    @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.HeadingName)
+    <br />
+    @Html.Label("Status: ")
+    <select name="HeadingStatus">
+        <option>Select</option>
+        <option value="true">True</option>
+        <option value="false">False</option>
+    </select>
+    <br />
+    @Html.Label("Category")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Create</button>
+</div>
+}

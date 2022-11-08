@@ -1,0 +1,139 @@
+﻿@using EntityLayer.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Content>
+@{
+    ViewBag.Title = "ContentIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{ string color = "";}
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead style="background-color:grey">
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 10%">
+                                Heading Name
+                            </th>
+                            <th style="width: 2%">
+                                Status
+                            </th>
+                            <th style="width: 25%" class="text-center">
+                                Content
+                            </th>
+                            <th style="width: 10%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.Heading.HeadingName == "Faculty")
+                            {
+                                color = "badge badge-warning";
+                            }
+                            if (item.Heading.HeadingName == "Spor")
+                            {
+                                color = "badge badge-dark";
+                            }
+                            if (item.Heading.HeadingName == "Economic")
+                            {
+                                color = "badge badge-info";
+                            }
+                            if (item.Heading.HeadingName == "Justice")
+                            {
+                                color = "badge badge-secondary";
+                            }
+                            if (item.Heading.HeadingName == "Film")
+                            {
+                                color = "badge badge-success";
+                            }
+                            if (item.Heading.HeadingName == "Dizi")
+                            {
+                                color = "badge badge-danger";
+                            }
+                            if (item.Heading.HeadingName == "Sosyal Mediya")
+                            {
+                                color = "badge badge-success";
+                            }
+
+                            {
+
+                            }
+                            <tr>
+                                <td>
+                                    @item.ContentID
+                                </td>
+                                <td>
+                                    <a>
+                                        <span><strong class="@color">@item.Heading.HeadingName</strong> </span>
+                                    </a>
+                                    <br />
+                                    <small>
+                                        @(((DateTime)item.ContentDate).ToString("dd-MMM-yyyy"))
+                                    </small>
+                                </td>
+                                <td>
+                                    @item.ContentStatus
+                                </td>
+                                <td class="project-state">
+                                    <details>
+                                        <summary class="d-inline-block text-truncate; btn btn-warning" style="max-width: 150px; color:#137808";>Click here... </summary>
+                                        @item.ContentValue
+                                    </details>
+                                    @*<span><p style="margin:auto; padding:inherit; font-style:italic">@item.ContentValue</p>  </span>*@
+                                </td>
+                                <td class="project-actions text-right">
+
+                                    @*<a class="btn btn-info btn-sm" href="# @item.ContentID">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Detail
+                                        </a>*@
+                                    <a class="btn btn-danger btn-sm" href="/Content/ContentDelete/@item.ContentID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                                @*<td>
+                                        <div class='dropdown'>
+                                            <button class='btn btn-primary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                                Actions
+                                            </button>
+                                            <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                                                <div class='dropdown-divider'></div>
+                                                <a class='dropdown-item' href='/Content/ContentIndex/?true={@item.ContentID}'>True</a>
+                                                <div class='dropdown-divider'></div>
+                                                <a class='dropdown-item' href='/Content/ContentIndex/?false={@item.ContentID}'>False</a>
+                                            </div>
+                                        </div>
+                                    </td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+</body>
+</html>
+<a href="/Content/Add/" class="btn btn-primary">New Content</a>
+
+<strong>
+    @Html.PagedListPager((IPagedList)Model, Page => Url.Action("ContentIndex", new { Page }))
+</strong>

@@ -1,0 +1,664 @@
+﻿@using EntityLayer.Concrete
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Heading>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<style>
+    .cool {
+        margin: auto;
+        width: 5.5%;
+        color: black;
+        padding-top: 18px;
+        border: 2px solid #000000;
+        background-color: #524a0d;
+        text-align: center;
+    }
+</style>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<body>
+    <!-- mian-content -->
+    <header class="index-banner" id="home">
+        <!-- nav -->
+        <nav class="main-header d-flex">
+            <div id="brand">
+                <div id="">
+                    <a href="#">
+                        <img width="70px" height="70px" alt="Avatar" style="border-radius:25%" src="~/AdminLTE-3.0.4/images1/logo2.png" />
+                    </a>
+                </div>
+                <div id="word-mark">
+                    <h1>
+                        <a href="#">JISS</a>
+                    </h1>
+                </div>
+            </div>
+            <div id="menu">
+                <div id="menu-toggle">
+                    <div id="menu-icon">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+                <ul class="text-center nav-honey">
+                    <li>
+                        <a href="">Home</a>
+                    </li>
+                    <li>
+                        <a class="scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="scroll" href="#services">Faculty</a>
+                    </li>
+                    <li>
+                        <a class="scroll" href="#projects">Fee Structure</a>
+                    </li>
+                    <li>
+                        <a class="scroll" href="#contact">Research</a>
+                    </li>
+                    <li>
+                        <a class="scroll" href="#contact">Download</a>
+                    </li>
+                    <li>
+                        <a class="scroll" href="#contact">Apply Online</a>
+                    </li>
+                    <li class="login">
+                        <button type="button" class="btn login-btn text-uppercase " data-toggle="modal" data-target="#exampleModalCenter">
+                            Login
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </nav>
+        <!-- //nav -->
+        <!-- banner -->
+        <!-- //banner -->
+    </header>
+    <!-- //header -->
+    <!--// banner-slider -->
+    <!-- banner-bottom-wthree -->
+    <!--// ab -->
+    <!-- /services -->
+    <section class="services py-md-3 py-4" id="services">
+        <div class="container">
+            <div class="inner-sec-w3ls py-md-3 py-2">
+                <h4 class="sub-tittle-w3 text-uppercase text-center"></h4>
+
+                <div class="price-right">
+                    <div class="tabs">
+                        @foreach (var item in Model)
+                        {
+                            <div class="testimonials-inner container py-lg-4 py-3">
+                                <h3 style="color:#524a0d" class="tittle-w3 text-uppercase mb-lg-1 mb-3 text-center">@item.Category.CategoryName</h3>
+                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="carousel-item active">
+
+                                            <div class="testimonials_grid center">
+                                                <div class="testimonials_grid-inn text-uppercase">
+                                                    <i class="fas fa-quote-left"></i>
+                                                    <p><strong>@item.HeadingName</strong></p>
+                                                    <div class="cool">
+                                                        <strong>
+                                                            @Html.PagedListPager((IPagedList)Model, Page => Url.Action("Index", new { Page }))
+                                                        </strong>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*@Html.PagedListPager((IPagedList)Model, Page => Url.Action("Index", new { Page }))*@
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //services -->
+    <!-- /experience -->
+    <!-- //experience -->
+    <!--gallery  -->
+    <section style="background-color:#524a0d" class="gallery py-md-5 py-3" id="projects">
+        <div class="gallery-inner container py-md-5 pb-3">
+            <div class="row">
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="menu-grids mt-4">
+                            <div class="row t-in">
+                                <div class="col-lg-4 service-in text-center" data-aos="flip-up">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <i class="fas fa-list-ul mb-4"></i>
+                                            <h5 class="card-title text-uppercase">Professional Code</h5>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur elit,Adipisicing elit tempor.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4 service-in text-center" data-aos="flip-up">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <i class="far fa-lightbulb mb-4"></i>
+                                            <h5 class="card-title text-uppercase">Creative Ideas</h5>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur elit,Adipisicing elit tempor.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4 service-in text-center" data-aos="flip-up">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <i class="far fa-clone mb-4"></i>
+                                            <h5 class="card-title text-uppercase">SEO & Marketing</h5>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur elit,Adipisicing elit tempor.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="menu-grids mt-4">
+                            <div class="row t-in">
+                                <div class="col-lg-4 service-in text-center">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <i class="far fa-heart mb-4"></i>
+                                            <h5 class="card-title">User Friendly</h5>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur elit,Adipisicing elit tempor.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4 service-in text-center">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <i class="fas fa-magic mb-4"></i>
+                                            <h5 class="card-title">Web Development</h5>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur elit,Adipisicing elit tempor.</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-4 service-in text-center">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <i class="fas fa-sliders-h mb-4"></i>
+                                            <h5 class="card-title">Portfolio Options</h5>
+                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur elit,Adipisicing elit tempor.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--end portfolio-area -->
+            </div>
+            <!-- //gallery container -->
+        </div>
+    </section>
+    <!-- //gallery -->
+    <!--/stats-->
+    <!--//stats-->
+    <!-- /testimonials -->
+    <div class="testimonials py-lg-5 py-4" id="clients">
+        <div class="testimonials-inner container py-lg-4 py-3">
+            <h4 class="sub-tittle-w3 text-uppercase text-center">Testimonials</h4>
+            <h3 class="tittle-w3 text-uppercase mb-lg-5 mb-3 text-center">What They Says</h3>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+
+                        <div class="testimonials_grid center">
+                            <div class="testimonials_grid-inn text-uppercase">
+                                <i class="fas fa-quote-left"></i>
+                                <p>Lorem ipsum dolor sit amet,Maecenas interdum magna quam egestas sem, ac scelerisque nisl nibh vel lacus. Proin eget gravida odio. Donec ullamcorper est eu accumsan cursus.</p>
+                            </div>
+                            <h3>Gretchen </h3>
+
+                            <label>United States</label>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonials_grid text-center">
+                            <div class="testimonials_grid-inn text-uppercase">
+                                <i class="fas fa-quote-left"></i>
+                                <p>Lorem ipsum dolor sit amet,Maecenas interdum magna quam egestas sem, ac scelerisque nisl nibh vel lacus. Proin eget gravida odio. Donec ullamcorper est eu accumsan cursus.</p>
+                            </div>
+                            <h3>
+                                Anne Marc
+
+                            </h3>
+                            <label>United States</label>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonials_grid">
+                            <div class="testimonials_grid-inn text-uppercase">
+                                <i class="fas fa-quote-left"></i>
+                                <p>Maecenas interdum, metus vitae tincidunt porttitor, magna quam egestas sem, ac scelerisque nisl nibh vel lacus. Proin eget gravida odio. Donec ullamcorper est eu accumsan cursus.</p>
+
+                            </div>
+                            <h3>
+                                Harry Baker
+
+                            </h3>
+                            <label>United States</label>
+
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev test" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="fas fa-long-arrow-alt-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next test" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="fas fa-long-arrow-alt-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //testimonials -->
+    <!-- /Contact-->
+    <section class="contact py-lg-5 py-md-5 py-3" id="contact">
+        <div class="container">
+            <div class="inner-sec-w3ls py-lg-5 py-3">
+                <h4 class="sub-tittle-w3 text-uppercase text-center">Find Me</h4>
+                <h3 class="tittle-w3 text-uppercase mb-lg-5 mb-3 text-center text-white">Contact Me Now</h3>
+
+                <div class="contact_grid_right">
+                    <form action="#" method="post">
+                        <div class="row contact_left_grid">
+                            <div class="col-md-6 con-left" data-aos="fade-up">
+                                <div class="form-group">
+
+                                    <input class="form-control" type="text" name="Name" placeholder="" required="">
+                                </div>
+                                <div class="form-group">
+
+                                    <input class="form-control" type="email" name="Email" placeholder="" required="">
+                                </div>
+                                <div class="form-group">
+
+                                    <input class="form-control" type="text" name="Subject" placeholder="" required="">
+                                </div>
+                            </div>
+                            <div class="col-md-6 con-right" data-aos="fade-up">
+                                <div class="form-group">
+                                    <textarea id="textarea" placeholder="" required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="sub-honey mx-auto mt-3">
+                                <input class="form-control" type="submit" value="Submit">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="address row mt-lg-5">
+
+                    <div class="col-md-4 address-grid" data-aos="flip-up">
+                        <div class="address-info">
+                            <div class="address-left text-center">
+                                <i class="far fa-map"></i>
+                            </div>
+                            <div class="address-right text-center">
+                                <h6 class="my-3">Address</h6>
+                                <p>
+                                    Doha, Qatar
+
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 address-grid" data-aos="flip-up">
+                        <div class="address-info">
+                            <div class="address-left text-center">
+                                <i class="far fa-envelope"></i>
+                            </div>
+                            <div class="address-right text-center">
+                                <h6 class="my-3">Email</h6>
+                                <p>
+                                    Email :
+                                    <a href="makki.mht@gmail.com">makki.mht@gmail.com</a>
+
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 address-grid" data-aos="flip-up">
+                        <div class="address-info">
+                            <div class="address-left text-center">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="address-right text-center">
+                                <h6 class="my-3">Phone</h6>
+                                <p>+90 541 523 03 40</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //Contact -->
+    <!--/footer-->
+    <footer style="background-color:#524a0d" class="footer text-left">
+        <div class="container py-4 py-sm-3">
+
+            <div class="d-flex justify-content-between pt-lg-3  footer-bottom-cpy">
+                <div class="copy-right-w3ls">
+                    <p>
+                        © 2022 Jowhar Institute. All rights reserved.
+                    </p>
+                </div>
+                <div class="social-content pb-md-0 pb-4">
+                    <ul class="social-icons text-center d-flex">
+                        <li class="ml-lg-5">
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--//footer-->
+    <!--model-forms-->
+    <!--/Login-->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="login px-4 mx-auto mw-100">
+                        <h5 class="text-center mb-4">Login Now</h5>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label class="mb-2">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-2">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="" required="">
+                            </div>
+                            <div class="form-check mb-2">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary submit mb-4">Sign In</button>
+                            <p class="text-center pb-4">
+                                <a href="#" data-toggle="modal" data-target="#exampleModalCenter2"> Don't have an account?</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--//Login-->
+    <!--/Register-->
+    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="login px-4 mx-auto mw-100">
+                        <h5 class="text-center mb-4">Register Now</h5>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label>First name</label>
+
+                                <input type="text" class="form-control" id="validationDefault01" placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Last name</label>
+                                <input type="text" class="form-control" id="validationDefault02" placeholder="" required="">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="mb-2">Password</label>
+                                <input type="password" class="form-control" id="password1" placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" id="password2" placeholder="" required="">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary submit mb-4">Register</button>
+                            <p class="text-center pb-4">
+                                <a href="#">By clicking Register, I agree to your terms</a>
+                            </p>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--//Register-->
+
+    <script src="~/AdminLTE-3.0.4/web/js/jquery-2.2.3.min.js"></script>
+    <!-- banner-type-text -->
+    <script src='~/AdminLTE-3.0.4/web/js/aos.js'></script>
+    <script>
+        AOS.init({
+            easing: 'ease-out-back',
+            duration: 1000
+        });
+
+    </script>
+    <!-- sticky nav bar-->
+    <script>
+        $(() => {
+
+            //On Scroll Functionality
+            $(window).scroll(() => {
+                var windowTop = $(window).scrollTop();
+                windowTop > 100 ? $('nav').addClass('navShadow') : $('nav').removeClass('navShadow');
+                windowTop > 100 ? $('ul.nav-honey').css('top', '50px') : $('ul.nav-honey').css('top', '160px');
+            });
+
+            //Click
+
+            To Scroll To Top
+            $('#logo').on('click', () => {
+                $('html,body').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+
+            //            //Smooth Scrolling Using Navigation Menu
+            //            $('a[href*="#"]').on('click', function(e) {
+            //                $('html,body').animate({
+            //                    scrollTop: $($(this).attr('href')).offset().top - 100
+            //                }, 500);
+            //                e.preventDefault();
+            //            });
+
+            //Toggle Menu
+            $('#menu-toggle').on('click', () => {
+                $('#menu-toggle').toggleClass('closeMenu');
+                $('ul').toggleClass('showMenu');
+
+                $('li').on('click', () => {
+                    $('ul').removeClass('showMenu');
+                    $('#menu-toggle').removeClass('closeMenu');
+                });
+            });
+
+        });
+
+    </script>
+    <!-- //sticky nav bar -->
+    <!-- Include jQuery Timeline Plugin -->
+    <script src="~/AdminLTE-3.0.4/web/js/jquery.roadmap.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            var events = [{
+                date: 'Oct 2018 - Present',
+                content: 'Company Name <small>Co-founder, Front-end Designer</small>'
+            },
+            {
+                date: '2016 - 2018',
+                content: 'Company Name <small>Senior Visual Designer</small>'
+            },
+            {
+                date: '2013 - 2016',
+                content: 'Company Name <small>Mid-level Designer</small>'
+            },
+            {
+                date: '2012 - 2013',
+                content: 'Company Name <small>Mid-level Designer</small>'
+            },
+            {
+                date: '2012 - 2013',
+                content: 'Company Name <small>Freelance</small>'
+            },
+            {
+                date: '2011 - 2012',
+                content: 'San Diego university  <small>For Design</small>'
+            },
+            {
+                date: '2010 - 2011',
+                content: 'New York university  <small>For Graphic Design</small>'
+            },
+
+            {
+                date: '2009 - 2010',
+                content: 'New York university  <small>For Graphic Design</small>'
+            },
+
+            {
+                date: '2008 - 2009',
+                content: 'New York university  <small>For Graphic Design</small>'
+            },
+            {
+                date: '2005 - 2008',
+                content: 'Lorem Ipsum  <small>Add Description</small>'
+            },
+            {
+                date: '2003 - 2005',
+                content: 'Lorem IPsum  <small>Add Description</small>'
+            },
+            {
+                date: '2001 - 2003',
+                content: 'Lorem IPsum  <small>Add Description</small>'
+            }
+            ];
+
+            $('#my-timeline').roadmap(events, {
+                eventsPerSlide: 6,
+                slide: 1,
+                prevArrow: '<i class="fas fa-chevron-left"></i>',
+                nextArrow: '<i class="fas fa-chevron-right"></i>'
+            });
+        });
+
+    </script>
+    <!-- simpleLightbox -->
+    <script src="~/AdminLTE-3.0.4/web/js/simpleLightbox.js"></script>
+    <script>
+        $('.proj_gallery_grid a').simpleLightbox();
+
+    </script>
+    <!-- //simpleLightbox -->
+    <!-- stats -->
+    <script src="~/AdminLTE-3.0.4/web/js/jquery.waypoints.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/web/js/jquery.countup.js"></script>
+    <script>
+        $('.counter').countUp();
+
+    </script>
+    <!-- //stats -->
+    <!--/ start-smoth-scrolling -->
+    <script src="~/AdminLTE-3.0.4/web/js/move-top.js"></script>
+    <script src="~/AdminLTE-3.0.4/web/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            /*
+                                    var defaults = {
+                                          containerID: 'toTop', // fading element id
+                                        containerHoverID: 'toTopHover', // fading element hover id
+                                        scrollSpeed: 1200,
+                                        easingType: 'linear'
+                                     };
+                                    */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+
+    </script>
+    <!--// end-smoth-scrolling -->
+    <!-- //js -->
+
+    <script src="~/AdminLTE-3.0.4/web/js/bootstrap.js"></script>
+
+</body>
+
+</html>
+
+

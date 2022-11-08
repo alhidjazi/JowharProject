@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concrete.Gallery
+
+<button class="btn btn-warning" data-toggle="modal" data-target="#Modal1">
+    New Image
+</button>
+@*popup işlemi ile*@
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">New Gallery Entry</h2>
+            </div>
+           
+            <form method="post" action="/Gallery/Add/" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <label>Image Name</label>
+                        <input type="text" name="ImageName" class="form-control" />
+                        <br />
+                        <label>Image File</label>
+                        <br />
+                        <input type="file" name="ImagePath" required>
+                        <br />
+                        <br />
+                        <button class="btn btn-info">Submit</button>
+                    </div>
+                </form>
+
+        </div>
+    </div>
+</div>
+
+

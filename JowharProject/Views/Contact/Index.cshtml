@@ -1,0 +1,136 @@
+﻿@using EntityLayer.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Contact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{ string color = "";}
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead style="background-color:grey">
+                        <tr>
+                            <th style="width: 6%">
+                                #
+                            </th>
+                            <th style="width: 13%">
+                                User Name
+                            </th>
+                            <th style="width: 20%">
+                                User Mail
+                            </th>
+                            <th style="width: 8%">
+                                Status
+                            </th>
+                            <th style="width: 3%">
+                                Subject
+                            </th>
+                            <th style="width: 5%" class="text-center">
+                                Message
+                            </th>
+                            <th style="width: 25%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            if (item.Subject == "Education")
+                            {
+                                color = "badge badge-warning";
+                            }
+                            if (item.Subject == "Spor")
+                            {
+                                color = "badge badge-dark";
+                            }
+                            if (item.Subject == "Economic")
+                            {
+                                color = "badge badge-info";
+                            }
+                            if (item.Subject == "Justice")
+                            {
+                                color = "badge badge-secondary";
+                            }
+                            if (item.Subject == "Film")
+                            {
+                                color = "badge badge-success";
+                            }
+                            if (item.Subject == "Dizi")
+                            {
+                                color = "badge badge-danger";
+                            }
+                            if (item.Subject == "Sosyal Mediya")
+                            {
+                                color = "badge badge-success";
+                            }
+
+                            {
+
+                            }
+                            <tr>
+                                <td>
+                                    @item.ContactID
+                                </td>
+                                <td>
+                                    <a>
+                                        @item.UserName
+                                    </a>
+                                    <br />
+                                    <small>
+                                        @(((DateTime)item.ContactDate).ToString("dd-MMM-yyyy"))
+                                    </small>
+                                </td>
+                                <td>
+                                    @item.UserMail
+                                </td>
+                                <td>
+                                    @item.UserStatus
+                                </td>
+                                <td>
+                                    @item.Subject
+                                </td>
+                                <td>
+                                    @item.Message.Substring(0, 15)
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-success btn-sm" href="/User/AddContent/">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Write Message
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="/Contact/ContactDelete/@item.ContactID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <strong>
+        @Html.PagedListPager((IPagedList)Model, Page => Url.Action("Index", new { Page }))
+    </strong>
+</body>
+</html>
+
+@*<a href="/Heading/Add/" class="btn btn-primary">New Heading</a>*@
+
+

@@ -1,0 +1,96 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+@{
+    ViewBag.Title = "JowharAcademy";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Jowhar Academy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/sidebar-03/css/style.css">
+    <link href="~/Content/style1.css" rel="stylesheet" />
+    <link href="~/Content/style2.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="active">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="p-4">
+                <h1 style="color:black; font-size:20px; "><a href="/Home/Index/" class="logo">JOWHAR ISTITUTE</a></h1>
+                <ul class="list-unstyled components mb-5" >
+                    <li class="active">
+                        <a href="/Home/JowharAcademy/"><span class="fa fa-home mr-3"></span> Home</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-user mr-3"></span> About</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-codepen mr-3"></span> Faculty</a>
+                        <ul >
+                            <li class="dropdown-child">
+                                <a href="#">Education Department</a>
+                                <ul >
+                                    <li><a href="/Home/JowharAcademyPolicy">Policy studies</a></li>
+                                    <li><a href="#">Security studies</a></li>
+                                    <li><a href="#">Economic studies</a></li>
+                                    <li><a href="#">International relations</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-info-circle mr-3"></span> Fee Structure</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-search mr-3"></span> Research</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-paper-plane mr-3"></span> Download</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="fa fa-paper-plane mr-3"></span> Apply Online</a>
+                    </li>
+                </ul>
+
+
+
+
+
+            </div>
+        </nav>
+        @foreach (var item in Model)
+        {
+            if (item.CategoryID == 5)
+            {
+                <div id="content" class="p-4 p-md-5 pt-5">
+                    <h2 class="mb-4">@item.CategoryName</h2>
+                    <p><strong>@item.CategoryDescription.</strong></p>
+                    
+                </div>
+            }
+            <!-- Page Content  -->
+
+        }
+    </div>
+
+    <script src="~/AdminLTE-3.0.4/sidebar-03/js/jquery.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/sidebar-03/js/popper.js"></script>
+    <script src="~/AdminLTE-3.0.4/sidebar-03/js/bootstrap.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/sidebar-03/js/main.js"></script>
+</body>
+</html>

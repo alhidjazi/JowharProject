@@ -1,0 +1,7 @@
+﻿
+.lol {
+    overflow: hidden; /* taşacak kısımları gizle. */
+    white-space: nowrap; /* alt satırı gösterme, alt satıra inme. */
+    text-overflow: ellipsis; /* uzunsa sonuna üç nokta koy. */
+}
+

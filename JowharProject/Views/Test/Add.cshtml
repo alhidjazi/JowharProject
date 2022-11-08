@@ -1,0 +1,36 @@
+﻿@*@model EntityLayer.Concrete.Category*@
+@model EntityLayer.Concrete.Heading
+@*@model EntityLayer.Concrete.Content*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Test", "Add", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.Label("Category Name")
+                @Html.DropDownListFor(x => x.Category.CategoryName,(List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Category.CategoryName)
+                <br />
+                @Html.Label("Heading Name")
+                @Html.DropDownListFor(x => x.HeadingName,(List<SelectListItem>)ViewBag.vlh, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.HeadingName)
+                <br />
+                @Html.Label("Content")
+                @Html.DropDownListFor(x => x.HeadingName, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+                <br />
+                <button class="btn btn-info">Create</button>
+            </div>
+        }
+    </div>
+</body>
+</html>

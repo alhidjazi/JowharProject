@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concrete.About
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    New About Us
+</button>
+@*popup işlemi ile*@
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">New About Us Text Entry</h2>
+            </div>
+            <form method="post" action="/About/AddAbout/">
+                <div class="modal-body">
+                    <label>About Heading Us</label>
+                    <input type="text" name="AboutName" class="form-control" />
+                    <br />
+                    <label>Description</label>
+                    <br />
+                    @Html.TextAreaFor(x=>x.Description, new {@class="form-control" })
+                    @*<input type="text" name="Descripton" class="form-control">*@
+                    <br />
+                    <label>About Image</label>
+                    <input type="file" name="Image" class="form-control" />
+                    <br />
+                    <button class="btn btn-info">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
